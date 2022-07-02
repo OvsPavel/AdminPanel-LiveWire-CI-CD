@@ -1,9 +1,9 @@
 <div>
-    <div class="col-12">
+    <div class="col-6">
 
         <h5>Зависимые списки</h5>
 
-        <div class="col-12 flex">
+        <div class="col-12 flex" style="justify-content: space-between;">
             <div class="col-5">
                 <label for="category">Категория</label>
                 <select class="form-control" id="category" wire:model="categoryId">

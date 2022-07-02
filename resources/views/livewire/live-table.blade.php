@@ -1,4 +1,4 @@
-<div>
+<div class="col-10 offset-1">
     <div class="row mb-4">
         <div class="col-md-12">
             <div class="float-right mt-5">
