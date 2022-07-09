@@ -8,11 +8,14 @@
     <meta name="description" content="CoreUI - Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,SCSS,HTML,RWD,Dashboard">
+    <meta name="csrf-token" content="{{ csrf_token() }}" >
     <title>CoreUI Bootstrap Admin Template</title>
     <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script type="text/javascript" async="" src="{{ asset('js/analytics.js') }}"></script>
     <!-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-1"></script>
@@ -29,7 +32,7 @@
 </head>
 
 <body>
-    @include('components.sidebar')
+    @include('components.mchs_sidebar')
  
     <div class="sidebar sidebar-light sidebar-lg sidebar-end sidebar-overlaid sidebar-self-hiding-xxl" id="aside">
         <div class="sidebar-header bg-transparent p-0">
@@ -233,11 +236,11 @@
                     <svg width="118" height="46" alt="CoreUI Logo">
                         <use xlink:href="assets/brand/coreui.svg#full"></use>
                     </svg></a>
-                <ul class="header-nav d-none d-md-flex">
+                <!-- <ul class="header-nav d-none d-md-flex">
                     <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-                </ul>
+                </ul> -->
                 <nav class="header-nav ms-auto me-4">
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         <input class="btn-check" id="btn-light-theme" type="radio" name="theme-switch" autocomplete="off" value="light" onchange="handleThemeChange(this)">
@@ -427,10 +430,25 @@
                 </nav>
             </div> -->
         </header>
-        <div class="body flex-grow-1 px-3">
+        <div id="app" class="body flex-grow-1 px-3">
 
            
         @yield('content')
+
+        <div id="action">
+            <div v-if="status_real" class="danger">
+                <b>@{{ message_title }}</b>
+                <br>
+                @{{ message_content }}
+            </div>
+
+            <div v-if="status_learning" class="not_danger">
+                <b>@{{ message_title }}</b>
+                <br>
+                @{{ message_content }}
+            </div>
+            
+        </div>
         
         </div>
         <footer class="footer">
@@ -479,7 +497,63 @@
     <script src="{{ asset('js/coreui-utils.js') }}"></script>
     <script src="{{ asset('js/js/main.js') }}"></script> -->
 
+<script src="{{ asset('js/app.js') }}"></script>
 
+<script>
+    const message = '';
+
+    function showMessage() {
+        document.getElementById('action').classList.add('active');
+    }
+
+    function hideMessage() {
+        document.getElementById('action').classList.remove('active');
+    }
+
+    const app = new Vue({
+    el: '#app',
+    // component: message,
+    data: {
+        message_title: '',
+        message_content: '',
+        status_real: '',
+        status_learning: ''
+    },
+
+
+    created() {
+        Echo.channel('notification')
+            .listen('MessageNotification', (e) => {
+
+                this.status_real = '';
+                this.status_learning = '';
+
+                console.log(e)
+                showMessage();
+
+                setTimeout(() => {
+                    hideMessage()
+                }, 4000);
+
+
+                this.message_title = e.message.title;
+                this.message_content = e.message.content;
+                
+                if (e.message.status == 'real') {
+                    this.status_real = e.message.status
+                }
+                
+                if (e.message.status == 'learning') {
+                    this.status_learning = e.message.status
+                }
+
+
+            });
+
+    }
+});
+
+</script>
 </body>
 
 </html>

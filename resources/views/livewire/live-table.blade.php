@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="overflow-x: scroll">
         <p class="w-100">Всего пользователей: <b>{{ $totalCount }}</b></p>
         <br>
         @if ($users->count())
@@ -17,7 +17,7 @@
                 <tr>
                     <th scope="col">
                         <a wire:click.prevent="sortBy('name')" role="button" href="#">
-                            Name
+                            Имя сотрудника
                             @include('includes.sort-icon', ['field' => 'name'])
                         </a>
                     </th>
@@ -29,13 +29,13 @@
                     </th>
                     <th scope="col">
                         <a wire:click.prevent="sortBy('address')" role="button" href="#">
-                            Address
+                            Адрес
                             @include('includes.sort-icon', ['field' => 'address'])
                         </a>
                     </th>
                     <th scope="col">
                         <a wire:click.prevent="sortBy('age')" role="button" href="#">
-                            Age
+                            Возраст
                             @include('includes.sort-icon', ['field' => 'age'])
                         </a>
                     </th>
@@ -46,10 +46,10 @@
                         </a>
                     </th> -->
                     <th scope="col">
-                        Delete
+                        Удалить
                     </th>
                     <th scope="col">
-                        Edit
+                        Редактировать
                     </th>
                 </tr>
             </thead>
@@ -63,12 +63,12 @@
                     <!-- <td>{{ $user->created_at->format('m-d-Y') }}</td> -->
                     <td>
                         <button class="btn btn-sm btn-danger" wire:click="$emit('delete', {{ $user->id }}, '{{ $user->name }}')">
-                            Delete
+                            Удалить
                         </button>
                     </td>
                     <td>
                         <button class="btn btn-sm btn-dark">
-                            Edit
+                            Редактировать
                         </button>
                     </td>
                 </tr>

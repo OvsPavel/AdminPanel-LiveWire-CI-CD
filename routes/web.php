@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\MessageNotification;
+use App\Http\Controllers\MessageNotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +31,17 @@ Route::get('/news', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Broadcast
+
+Route::get('/event/{title}&{content}&{status}', [MessageNotificationController::class, 'sendMessage']); 
+
+// роут для отладки Broadcast`а
+// Route::get('/listen', function () {
+//     return view('listen');
+// });
