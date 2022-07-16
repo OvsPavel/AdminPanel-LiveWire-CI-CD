@@ -60,10 +60,16 @@ h5 {
     text-transform: uppercase;
 }
 
+.table_title{
+    color: grey;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
 /* ============================== start broadcasting ============================== */
 
 #app {
-    height: 95vh;
+    height: 90vh;
     overflow-y: hidden;
     position: relative;
 }
@@ -105,11 +111,11 @@ h5 {
     }
 
     10% {
-        bottom: 50px;
+        bottom: 10%;
     }
 
     90% {
-        bottom: 50px;
+        bottom: 10%;
     }
 
     100% {

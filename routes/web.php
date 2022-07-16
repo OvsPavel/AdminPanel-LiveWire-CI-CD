@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\MessageNotification;
 use App\Http\Controllers\MessageNotificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,26 +19,35 @@ Route::get('/', function () {
 });
 
 
-Route::get('/contacts', function () {
-    return view('contacts');
-})->name('contacts');
+// Auth::routes();
 
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
+// Главная страница
+Route::view('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Рабочее место
+Route::view('/cabinet', [App\Http\Controllers\HomeController::class, 'cabinet'])->name('cabinet');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Отчеты
+Route::view('/reports', [App\Http\Controllers\HomeController::class, 'reports'])->name('reports');
 
+// Справочники
+Route::view('/dictionaries', [App\Http\Controllers\HomeController::class, 'dictionaries'])->name('dictionaries');
 
-Auth::routes();
+// Пользователи
+Route::view('/users', [App\Http\Controllers\HomeController::class, 'users'])->name('users');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Пользователи -> Администрирование
+Route::view('/usersAdmin', [App\Http\Controllers\HomeController::class, 'usersAdmin'])->name('users.admin');
+
+// Справки
+Route::view('/references', [App\Http\Controllers\HomeController::class, 'references'])->name('references');
 
 // Broadcast
 
-Route::get('/event/{title}&{content}&{status}', [MessageNotificationController::class, 'sendMessage']); 
+Route::post('/sendMessage', [MessageNotificationController::class, 'sendMessage'])->name('sendMessage');
+
+// страница с формой отпрвки тестовых событий в BroadCast
+Route::get('/sendEvent', [MessageNotificationController::class, 'showSendEventForm'])->name('showSendEventForm');
 
 // роут для отладки Broadcast`а
 // Route::get('/listen', function () {

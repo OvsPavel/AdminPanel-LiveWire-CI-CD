@@ -1,9 +1,9 @@
 <div class="sidebar sidebar-dark sidebar-fixed sidebar-self-hiding-xl" id="sidebar">
         <div class="sidebar-brand d-none d-md-flex">
-            <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+            <svg class="sidebar-brand-full" width="118" height="46" alt="Logo">
                 <use xlink:href="assets/brand/coreui.svg#full"></use>
             </svg>
-            <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
+            <svg class="sidebar-brand-narrow" width="46" height="46" alt="Logo">
                 <use xlink:href="assets/brand/coreui.svg#signet"></use>
             </svg>
         </div>
@@ -84,9 +84,9 @@
                                             <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-star"></use>
                                         </svg> Icons</a>
                                     <ul class="nav-group-items">
-                                        <li class="nav-item"><a class="nav-link" href="https://coreui.io/demo/4.0/icons/coreui-icons-free.html"> CoreUI Icons<span class="badge badge-sm bg-success ms-auto">Free</span></a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://coreui.io/demo/4.0/icons/coreui-icons-brand.html"> CoreUI Icons - Brand</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://coreui.io/demo/4.0/icons/coreui-icons-flag.html"> CoreUI Icons - Flag</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="https://coreui.io/demo/4.0/icons/coreui-icons-free.html"> Icons<span class="badge badge-sm bg-success ms-auto">Free</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" href="https://coreui.io/demo/4.0/icons/coreui-icons-brand.html"> Icons - Brand</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="https://coreui.io/demo/4.0/icons/coreui-icons-flag.html"> Flag</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">

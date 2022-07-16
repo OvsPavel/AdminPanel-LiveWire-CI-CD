@@ -7,12 +7,19 @@ use Illuminate\Http\Request;
 
 class MessageNotificationController extends Controller
 {
-    public function sendMessage($title, $content, $status)
+    public function sendMessage(Request $request)
     {        
         event(new MessageNotification([
-            'title' => $title,
-            'content' => $content,
-            'status' => $status
+            'title' => $request['title'],
+            'content' => $request['content'],
+            'status' => $request['status']
         ]));
+
+        return redirect()->route('showSendEventForm');
+    }
+
+    public function showSendEventForm()
+    {
+        return view('sendMessageForm');
     }
 }

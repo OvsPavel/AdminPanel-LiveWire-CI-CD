@@ -15,36 +15,30 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">
-                        <a wire:click.prevent="sortBy('name')" role="button" href="#">
+                    <th scope="col" class="text-center">
+                        <a class="table_title" wire:click.prevent="sortBy('name')" role="button" href="#">
                             Имя сотрудника
                             @include('includes.sort-icon', ['field' => 'name'])
                         </a>
                     </th>
-                    <th scope="col">
-                        <a wire:click.prevent="sortBy('email')" role="button" href="#">
+                    <th scope="col" class="text-center">
+                        <a class="table_title" wire:click.prevent="sortBy('email')" role="button" href="#">
                             Email
                             @include('includes.sort-icon', ['field' => 'email'])
                         </a>
                     </th>
-                    <th scope="col">
-                        <a wire:click.prevent="sortBy('address')" role="button" href="#">
+                    <th scope="col" class="text-center">
+                        <a class="table_title" wire:click.prevent="sortBy('address')" role="button" href="#">
                             Адрес
                             @include('includes.sort-icon', ['field' => 'address'])
                         </a>
                     </th>
-                    <th scope="col">
-                        <a wire:click.prevent="sortBy('age')" role="button" href="#">
+                    <th scope="col" class="text-center">
+                        <a class="table_title" wire:click.prevent="sortBy('age')" role="button" href="#">
                             Возраст
                             @include('includes.sort-icon', ['field' => 'age'])
                         </a>
                     </th>
-                    <!-- <th>
-                        <a wire:click.prevent="sortBy('created_at')" role="button" href="#">
-                        Created at
-                        @include('includes.sort-icon', ['field' => 'created_at'])
-                        </a>
-                    </th> -->
                     <th scope="col">
                         Удалить
                     </th>
@@ -60,9 +54,8 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->address }}</td>
                     <td>{{ $user->age }}</td>
-                    <!-- <td>{{ $user->created_at->format('m-d-Y') }}</td> -->
                     <td>
-                        <button class="btn btn-sm btn-danger" wire:click="$emit('delete', {{ $user->id }}, '{{ $user->name }}')">
+                        <button class="btn btn-sm btn-warning"   wire:click="$emit('delete', {{ $user->id }}, '{{ $user->name }}')">
                             Удалить
                         </button>
                     </td>

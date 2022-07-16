@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,SCSS,HTML,RWD,Dashboard">
+    <meta name="description" content="Административная панель для проекта `Стрелец-Мониторинг`">
+    <meta name="author" content="@ovspavel_krd">
+    <meta name="keyword" content="Административная панель для проекта `Стрелец-Мониторинг`">
     <meta name="csrf-token" content="{{ csrf_token() }}" >
-    <title>CoreUI Bootstrap Admin Template</title>
+    <title>Проект "Стрелец-Мониторинг"</title>
     <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
@@ -228,14 +228,14 @@
     <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
         <header class="header header-sticky mb-4">
             <div class="container-fluid">
-                <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+                <!-- <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
                     <svg class="icon icon-lg">
                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
                     </svg>
-                </button><a class="header-brand d-md-none" href="#">
-                    <svg width="118" height="46" alt="CoreUI Logo">
+                </button><a class="header-brand d-md-none" href="#"> -->
+                    <!-- <svg width="118" height="46" alt="Logo">
                         <use xlink:href="assets/brand/coreui.svg#full"></use>
-                    </svg></a>
+                    </svg></a> -->
                 <!-- <ul class="header-nav d-none d-md-flex">
                     <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
@@ -452,8 +452,8 @@
         
         </div>
         <footer class="footer">
-            <!-- <div><a href="https://coreui.io">CoreUI</a> © 2021 creativeLabs.</div>
-            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/pro/">CoreUI PRO</a></div> -->
+            <!-- <div><a href="#">CoreUI</a> © 2022 .</div>
+            <div class="ms-auto">Powered by&nbsp;<a href="#"></a></div> -->
         </footer>
     </div>
 

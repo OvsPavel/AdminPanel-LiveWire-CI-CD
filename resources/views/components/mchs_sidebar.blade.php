@@ -1,9 +1,9 @@
 <div class="sidebar sidebar-dark sidebar-fixed sidebar-self-hiding-xl" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+        <svg class="sidebar-brand-full" width="118" height="46" alt="Logo">
             <use xlink:href="assets/brand/coreui.svg#full"></use>
         </svg>
-        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
+        <svg class="sidebar-brand-narrow" width="46" height="46" alt="Logo">
             <use xlink:href="assets/brand/coreui.svg#signet"></use>
         </svg>
     </div>
@@ -17,7 +17,7 @@
                     <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
                         <div class="simplebar-content" style="padding: 0px;">
                             <li class="nav-item">
-                                <a class="nav-link" href="/">
+                                <a class="nav-link" href="{{ route('home') }}">
                                 <svg class="nav-icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
                                     </svg>
@@ -25,7 +25,7 @@
                             </li>
                             <li class="nav-title">Разделы</li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('home') }}">
                                     <svg class="nav-icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-spreadsheet"></use>
                                     </svg>Главная
@@ -33,7 +33,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('cabinet') }}">
                                     <svg class="nav-icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
                                     </svg>Рабочее место
@@ -41,7 +41,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('reports') }}">
                                     <svg class="nav-icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
                                     </svg>Отчеты
@@ -49,7 +49,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('dictionaries') }}">
                                     <svg class="nav-icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-layers"></use>
                                     </svg>Справочники
@@ -65,13 +65,13 @@
                                 </a>
                                 <ul class="nav-group-items">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="{{ route('users.admin') }}">
                                             <span class="nav-icon"></span>
                                             Администраторы
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="{{ route('users') }}">
                                             <span class="nav-icon"></span>
                                             Пользователи
                                         </a>
@@ -80,12 +80,23 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('references') }}">
                                     <svg class="nav-icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-description"></use>
                                     </svg>Справки
                                 </a>
                             </li>
+
+                            <li class="nav-title">Тестирование</li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('showSendEventForm') }}" target="_blank">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-description"></use>
+                                    </svg>Тестовое событие
+                                </a>
+                            </li>
+                            
 
                         </div>
                     </div>
