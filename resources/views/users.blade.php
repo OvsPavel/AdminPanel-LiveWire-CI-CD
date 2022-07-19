@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-users.list
+<livewire:live-table />
 
 @endsection

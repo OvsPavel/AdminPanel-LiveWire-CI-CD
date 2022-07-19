@@ -13,6 +13,7 @@ class LiveTable extends Component
     public $sortField = 'name'; // базовое поле сортировки
     public $sortAsc = true; // базовое направление сортировки
     public $search = '';
+    public $showInput = false;
 
     protected $listeners = ['delete'];
 
@@ -31,7 +32,6 @@ class LiveTable extends Component
     {
         User::find($id)
             ->delete();
-
     }
 
 
@@ -39,9 +39,10 @@ class LiveTable extends Component
     {
         return view('livewire.live-table', [
             'users' => User::search($this->search)
+            ->where('role_id', '!=', 1)
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->simplePaginate(10),
-                'totalCount' => User::count()
+            'totalCount' => User::where('role_id', '!=', 1)->count(),
         ]);
     }
 }

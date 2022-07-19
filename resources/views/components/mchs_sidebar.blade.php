@@ -18,8 +18,8 @@
                         <div class="simplebar-content" style="padding: 0px;">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">
-                                <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
+                                    <svg class="nav-icon">
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
                                     </svg>
                                     Админ.панель</a>
                             </li>
@@ -27,7 +27,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">
                                     <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-spreadsheet"></use>
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-spreadsheet') }}"></use>
                                     </svg>Главная
                                 </a>
                             </li>
@@ -35,7 +35,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('cabinet') }}">
                                     <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
                                     </svg>Рабочее место
                                 </a>
                             </li>
@@ -43,7 +43,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reports') }}">
                                     <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
                                     </svg>Отчеты
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dictionaries') }}">
                                     <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-layers"></use>
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-layers') }}"></use>
                                     </svg>Справочники
                                 </a>
                             </li>
@@ -59,8 +59,8 @@
 
                             <li class="nav-group">
                                 <a class="nav-link nav-group-toggle" href="#">
-                                <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                                    <svg class="nav-icon">
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                                     </svg> Пользователи
                                 </a>
                                 <ul class="nav-group-items">
@@ -76,13 +76,19 @@
                                             Пользователи
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('users.roles') }}">
+                                            <span class="nav-icon"></span>
+                                            Роли
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('references') }}">
                                     <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-description"></use>
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
                                     </svg>Справки
                                 </a>
                             </li>
@@ -92,16 +98,34 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('showSendEventForm') }}" target="_blank">
                                     <svg class="nav-icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-description"></use>
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-calendar') }}"></use>
                                     </svg>Тестовое событие
                                 </a>
                             </li>
-                            
+
+                            <li class="nav-title">Выход из аккаунта</li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                     <svg class="nav-icon">
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}"></use>
+                                    </svg>
+                                    Выйти
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+
 
                         </div>
                     </div>
                 </div>
             </div>
+
+
             <div class="simplebar-placeholder" style="width: 256px; height: 1296px;"></div>
         </div>
         <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">

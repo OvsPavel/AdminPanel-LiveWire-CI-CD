@@ -17,7 +17,19 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('user_type', ['admin', 'user'])->default('user'); // add this
+
+            $table->unsignedBigInteger('role_id')
+                ->comment('ID роли')
+                ->nullable()
+                ->constrained("roles")
+                ->nullOnDelete();
+
+            $table->unsignedBigInteger('station_id')
+                ->comment('ID станции прикрепления')
+                ->nullable()
+                ->constrained("stations")
+                ->nullOnDelete();
+
             $table->tinyInteger('age'); // add this
             $table->string('address')->nullable(); // add this
             $table->timestamp('email_verified_at')->nullable();

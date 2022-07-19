@@ -8,12 +8,13 @@
     <meta name="description" content="Административная панель для проекта `Стрелец-Мониторинг`">
     <meta name="author" content="@ovspavel_krd">
     <meta name="keyword" content="Административная панель для проекта `Стрелец-Мониторинг`">
-    <meta name="csrf-token" content="{{ csrf_token() }}" >
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Проект "Стрелец-Мониторинг"</title>
     <link rel="stylesheet" href="{{ asset('css/prism.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -33,13 +34,13 @@
 
 <body>
     @include('components.mchs_sidebar')
- 
+
     <div class="sidebar sidebar-light sidebar-lg sidebar-end sidebar-overlaid sidebar-self-hiding-xxl" id="aside">
         <div class="sidebar-header bg-transparent p-0">
             <ul class="nav nav-underline nav-underline-primary" role="tablist">
                 <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#timeline" role="tab">
                         <svg class="icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-list') }}"></use>
                         </svg></a></li>
                 <li class="nav-item"><a class="nav-link" data-coreui-toggle="tab" href="#messages" role="tab">
                         <svg class="icon">
@@ -225,39 +226,39 @@
             </div>
         </div>
     </div>
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent" style="overflow-y: hidden;">
         <header class="header header-sticky mb-4">
-            <div class="container-fluid">
-                <!-- <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <div class="container-fluid user_header_action_btn">
+                <button class="header-toggler px-md-0 me-md-3" id="hamburger" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
                     <svg class="icon icon-lg">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+                        <use xlink:href="{{  asset('vendors/@coreui/icons/svg/free.svg#cil-menu') }}"></use>
                     </svg>
-                </button><a class="header-brand d-md-none" href="#"> -->
+                </button><a class="header-brand d-md-none mr-0" href="#">
                     <!-- <svg width="118" height="46" alt="Logo">
                         <use xlink:href="assets/brand/coreui.svg#full"></use>
                     </svg></a> -->
-                <!-- <ul class="header-nav d-none d-md-flex">
+                    <!-- <ul class="header-nav d-none d-md-flex">
                     <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
                 </ul> -->
-                <nav class="header-nav ms-auto me-4">
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input class="btn-check" id="btn-light-theme" type="radio" name="theme-switch" autocomplete="off" value="light" onchange="handleThemeChange(this)">
-                        <label class="btn btn-primary" for="btn-light-theme">
-                            <svg class="icon">
-                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-sun"></use>
-                            </svg>
-                        </label>
-                        <input class="btn-check" id="btn-dark-theme" type="radio" name="theme-switch" autocomplete="off" value="dark" onchange="handleThemeChange(this)">
-                        <label class="btn btn-primary" for="btn-dark-theme">
-                            <svg class="icon">
-                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-moon"></use>
-                            </svg>
-                        </label>
-                    </div>
-                </nav>
-                <!-- <ul class="header-nav me-3">
+                    <nav class="header-nav ml-auto mr-auto">
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                            <input class="btn-check" id="btn-light-theme" type="radio" name="theme-switch" autocomplete="off" value="light" onchange="handleThemeChange(this)">
+                            <label class="btn btn-primary" for="btn-light-theme">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-sun') }}"></use>
+                                </svg>
+                            </label>
+                            <input class="btn-check" id="btn-dark-theme" type="radio" name="theme-switch" autocomplete="off" value="dark" onchange="handleThemeChange(this)">
+                            <label class="btn btn-primary" for="btn-dark-theme">
+                                <svg class="icon">
+                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-moon') }}"></use>
+                                </svg>
+                            </label>
+                        </div>
+                    </nav>
+                    <!-- <ul class="header-nav me-3">
                     <li class="nav-item dropdown d-md-down-none"><a class="nav-link" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <svg class="icon icon-lg my-1 mx-2">
                                 <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
@@ -367,56 +368,48 @@
                         </div>
                     </li>
                 </ul> -->
-                <ul class="header-nav me-4">
-                    <li class="nav-item dropdown d-flex align-items-center"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('img/avatar.jpg') }}" alt="user@email.com"></div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end pt-0">
-                            <div class="dropdown-header bg-light py-2">
-                                <div class="fw-semibold">Account</div>
-                            </div><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
-                                </svg> Updates<span class="badge badge-sm bg-info-gradient ms-2">42</span></a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                                </svg> Messages<span class="badge badge-sm badge-sm bg-success ms-2">42</span></a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-task"></use>
-                                </svg> Tasks<span class="badge badge-sm bg-danger-gradient ms-2">42</span></a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-comment-square"></use>
-                                </svg> Comments<span class="badge badge-sm bg-warning-gradient ms-2">42</span></a>
-                            <div class="dropdown-header bg-light py-2">
-                                <div class="fw-semibold">Settings</div>
-                            </div><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                                </svg> Profile</a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
-                                </svg> Settings</a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-credit-card"></use>
-                                </svg> Payments<span class="badge badge-sm bg-secondary-gradient text-dark ms-2">42</span></a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
-                                </svg> Projects<span class="badge badge-sm bg-primary-gradient ms-2">42</span></a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                                </svg> Lock Account</a><a class="dropdown-item" href="#">
-                                <svg class="icon me-2">
-                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                                </svg> Logout</a>
-                        </div>
-                    </li>
-                </ul>
-                <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#aside')).show()">
-                    <svg class="icon icon-lg">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-applications-settings"></use>
-                    </svg>
-                </button>
+                    <ul class="header-nav" id="user_menu">
+                        <li class="nav-item dropdown d-flex align-items-center"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('img/avatar.jpg') }}" alt="user@email.com"></div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end pt-0">
+                                <div class="dropdown-header bg-light py-2">
+                                    <div class="fw-semibold">Аккаунт</div>
+                                </div>
+                                <a class="dropdown-item" href="#">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
+                                    </svg> Обновления<span class="badge badge-sm bg-info-gradient ms-2">42</span></a><a class="dropdown-item" href="#">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                                    </svg> Сообщения<span class="badge badge-sm badge-sm bg-success ms-2">42</span></a><a class="dropdown-item" href="#">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-task"></use>
+                                    </svg> Задачи<span class="badge badge-sm bg-danger-gradient ms-2">42</span></a><a class="dropdown-item" href="#">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-comment-square"></use>
+                                    </svg> Комментарии<span class="badge badge-sm bg-warning-gradient ms-2">42</span></a>
+                                <div class="dropdown-header bg-light py-2">
+                                    <div class="fw-semibold">Настройки</div>
+                                </div><a class="dropdown-item" href="#">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                                    </svg> Профиль</a><a class="dropdown-item" href="#">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                                    </svg> Настройки</a><a class="dropdown-item" href="#">
+
+                                    <svg class="icon me-2">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                                    </svg> Проекты<span class="badge badge-sm bg-primary-gradient ms-2">42</span></a>
+                                
+                        </li>
+                    </ul>
+                    <!-- <button class="\ event_menu" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#aside')).show()">
+                        <svg class="icon icon-lg">
+                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-applications-settings"></use>
+                        </svg>
+                    </button> -->
             </div>
             <!-- <div class="header-divider"></div>
             <div class="container-fluid">
@@ -432,25 +425,26 @@
         </header>
         <div id="app" class="body flex-grow-1 px-3">
 
-           
-        @yield('content')
 
-        <div id="action">
-            <div v-if="status_real" class="danger">
+            @yield('content')
+
+
+            <div id="action">
+                <!-- <div v-if="status_real" class="danger">
                 <b>@{{ message_title }}</b>
                 <br>
                 @{{ message_content }}
-            </div>
+            </div> -->
 
-            <div v-if="status_learning" class="not_danger">
-                <b>@{{ message_title }}</b>
-                <br>
-                @{{ message_content }}
+                <div v-if="new_event" class="not_danger">
+                    <b>@{{ station }}</b>
+                    <br>
+                    @{{ object }}
+                </div>
+
             </div>
-            
         </div>
-        
-        </div>
+
         <footer class="footer">
             <!-- <div><a href="#">CoreUI</a> © 2022 .</div>
             <div class="ms-auto">Powered by&nbsp;<a href="#"></a></div> -->
@@ -491,69 +485,68 @@
     <script src="{{ asset('js/prism-unescaped-markup.min.js') }}"></script>
     <script src="{{ asset('js/prism-normalize-whitespace.js') }}"></script>
     <script src="{{ asset('js/multi-select.js') }}"></script>
-<!-- 
+    <!-- 
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/coreui-chartjs.js') }}"></script>
     <script src="{{ asset('js/coreui-utils.js') }}"></script>
     <script src="{{ asset('js/js/main.js') }}"></script> -->
 
-<script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
-<script>
-    const message = '';
+    <script>
+        const message = '';
 
-    function showMessage() {
-        document.getElementById('action').classList.add('active');
-    }
+        function showMessage() {
+            document.getElementById('action').classList.add('active');
+        }
 
-    function hideMessage() {
-        document.getElementById('action').classList.remove('active');
-    }
+        function hideMessage() {
+            document.getElementById('action').classList.remove('active');
+        }
 
-    const app = new Vue({
-    el: '#app',
-    // component: message,
-    data: {
-        message_title: '',
-        message_content: '',
-        status_real: '',
-        status_learning: ''
-    },
-
-
-    created() {
-        Echo.channel('notification')
-            .listen('MessageNotification', (e) => {
-
-                this.status_real = '';
-                this.status_learning = '';
-
-                console.log(e)
-                showMessage();
-
-                setTimeout(() => {
-                    hideMessage()
-                }, 4000);
+        const app = new Vue({
+            el: '#app',
+            // component: message,
+            data: {
+                station: null,
+                object: '',
+                // status_real: '',
+                // status_learning: ''
+                new_event: ''
+            },
 
 
-                this.message_title = e.message.title;
-                this.message_content = e.message.content;
-                
-                if (e.message.status == 'real') {
-                    this.status_real = e.message.status
-                }
-                
-                if (e.message.status == 'learning') {
-                    this.status_learning = e.message.status
-                }
+            created() {
+                Echo.channel('notification')
+                    .listen('MessageNotification', (e) => {
+
+                        this.new_event = true;
+
+                        console.log(e)
+                        showMessage();
+
+                        setTimeout(() => {
+                            hideMessage()
+                        }, 7000);
 
 
-            });
+                        this.station = e.message.station;
+                        this.object = e.message.object;
 
-    }
-});
+                        // if (e.message.status == 'real') {
+                        //     this.status_real = e.message.status
+                        // }
 
-</script>
+                        // if (e.message.status == 'learning') {
+                        // this.new_event = e.message.status
+                        // }
+
+
+                    });
+
+            }
+        });
+    </script>
 </body>
 
 </html>

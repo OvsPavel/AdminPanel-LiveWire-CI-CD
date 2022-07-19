@@ -4,18 +4,32 @@
 
 <div class="container">
 
-    <h5>Форма отправки тестового события</h5>
-
-    <div class="alert alert-success" role="alert">
-        Для проверки отправки события в Административную часть откройте Административную часть и эту страницу в разных окнах браузера
+    <div class="title mt-5 mb-5">Форма отправки тестового события</div>
+    
+    <div class="alert alert-success how_it_work" role="alert">
+        Для проверки отправки события в Административную часть откройте Административную часть и эту страницу в разных окнах браузера и выполните следующие шаги:
         <br>
-        При отправкке события через данную форму оно автоматически отобразится в интерфейсе Административнйо части сайта
+        <br>
+        - выберите Станцию и объект на Станции
+        <br>
+        - нажмите на кнопку <b> "Отправить тестовое событие" </b>
+        <br>
+        - сообщение о произошедшем событии автоматически отобразится в интерфейсе Административной части сайта
     </div>
     <hr>
-    <div class="col-md-6 col-12">
+    <div class="col-12">
         <form action="{{ route('sendMessage') }}" method="POST" style="display: flex; flex-wrap:wrap; ">
             @csrf
-            <label class="col-12" for="title">Название события
+
+            <livewire:object-select />
+            <!-- <label for="station">Станция</label> -->
+            <!-- <select name="station" id="station">
+                @foreach($objects as $object)
+                <option value="{{ $object->id }}">{{ $object->title }}</option>
+                @endforeach
+            </select> -->
+
+            <!-- <label class="col-12" for="title">Название события
                 <input class="form-control" type="text" name="title" id="title">
             </label>
 
@@ -36,10 +50,11 @@
                         <input class="form-check-input" type="radio" name="status" id="flexRadioDefault2" value="learning" checked>
                     </label>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="col-4 offset-10 mt-4">
-                <input type="submit" class="btn btn-primary" value="Отправить">
+            <div class="col-md-3 offset-md-4 col-10 offset-1 mt-4">
+
+                <input type="submit" class="btn btn-primary w-100" value="Отправить тестовое событие">
 
             </div>
 

@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'station_id',
+        'role_id'
     ];
 
     /**
@@ -41,16 +43,28 @@ class User extends Authenticatable
     protected $casts = [
         //
     ];
-    
+
     public static function search($query)
     {
-        return empty($query) ? static::query()->where('user_type', 'user')
-            : static::where('user_type', 'user')
-                ->where(function($q) use ($query) {
-                    $q
-                        ->where('name', 'LIKE', '%'. $query . '%')
-                        ->orWhere('email', 'LIKE', '%' . $query . '%')
-                        ->orWhere('address', 'LIKE ', '%' . $query . '%');
-                });
+        $relations = ['role', 'station'];
+
+        return empty($query)
+            ? static::query()
+            : static::with($relations)->where(function ($q) use ($query) {
+                $q
+                    ->where('name', 'LIKE', '%' . $query . '%')
+                    ->orWhere('email', 'LIKE', '%' . $query . '%')
+                    ->orWhere('address', 'LIKE ', '%' . $query . '%');
+            });
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'role_id')->withDefault();
+    }
+
+    public function station()
+    {
+        return $this->hasOne(Station::class, 'id', 'station_id')->withDefault();
     }
 }
