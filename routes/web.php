@@ -22,9 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Главная страница
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-     
+
     // Обекты пожарных станций
-     Route::get('/objects/{station:id}', [App\Http\Controllers\HomeController::class, 'objects'])->name('objects');
+    Route::get('/objects/{station:id}', [App\Http\Controllers\HomeController::class, 'objects'])->name('objects');
 
     // Рабочее место
     Route::view('/cabinet', [App\Http\Controllers\HomeController::class, 'cabinet'])->name('cabinet');
@@ -40,13 +40,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Пользователи -> Администрирование
     Route::get('/usersAdmin', [App\Http\Controllers\HomeController::class, 'usersAdmin'])->name('users.admin');
-    
+
     // Пользователи -> Администрирование > Роли
     Route::get('/roles', [App\Http\Controllers\HomeController::class, 'roles'])->name('users.roles');
 
     // Справки
     Route::view('/references', [App\Http\Controllers\HomeController::class, 'references'])->name('references');
 
+    // Пользователи -> Создание пользователя
+    Route::post('/createUser', [App\Http\Controllers\UserController::class, 'store'])->name('users.create');
 
     // ================================= Broadcast =================================
 

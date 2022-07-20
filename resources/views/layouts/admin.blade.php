@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
+    <!-- bootstrap -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <!-- bootstrap -->
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script type="text/javascript" async="" src="{{ asset('js/analytics.js') }}"></script>
@@ -402,7 +406,7 @@
                                     <svg class="icon me-2">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
                                     </svg> Проекты<span class="badge badge-sm bg-primary-gradient ms-2">42</span></a>
-                                
+
                         </li>
                     </ul>
                     <!-- <button class="\ event_menu" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#aside')).show()">
@@ -436,10 +440,12 @@
                 @{{ message_content }}
             </div> -->
 
-                <div v-if="new_event" class="not_danger">
+                <div v-if="new_event" class="danger">
+                    <b>Важность: @{{ emergencyType }}</b>
+                    <hr style="margin: 5px;">
                     <b>@{{ station }}</b>
                     <br>
-                    @{{ object }}
+                    @{{ message }}
                 </div>
 
             </div>
@@ -485,6 +491,12 @@
     <script src="{{ asset('js/prism-unescaped-markup.min.js') }}"></script>
     <script src="{{ asset('js/prism-normalize-whitespace.js') }}"></script>
     <script src="{{ asset('js/multi-select.js') }}"></script>
+
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
     <!-- 
     <script src="{{ asset('js/chart.min.js') }}"></script>
     <script src="{{ asset('js/coreui-chartjs.js') }}"></script>
@@ -531,7 +543,8 @@
 
 
                         this.station = e.message.station;
-                        this.object = e.message.object;
+                        this.message = e.message.message;
+                        this.emergencyType = e.message.emergencyType;
 
                         // if (e.message.status == 'real') {
                         //     this.status_real = e.message.status
@@ -546,6 +559,12 @@
 
             }
         });
+    </script>
+
+    <script>
+        $('#createUser').on('shown.bs.modal', function() {
+            $('#createUser').trigger('focus')
+        })
     </script>
 </body>
 

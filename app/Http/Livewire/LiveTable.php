@@ -10,7 +10,7 @@ class LiveTable extends Component
 {
     use WithPagination;
 
-    public $sortField = 'name'; // базовое поле сортировки
+    public $sortField = 'id'; // базовое поле сортировки
     public $sortAsc = true; // базовое направление сортировки
     public $search = '';
     public $showInput = false;
@@ -40,7 +40,7 @@ class LiveTable extends Component
         return view('livewire.live-table', [
             'users' => User::search($this->search)
             ->where('role_id', '!=', 1)
-                ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+                ->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
                 ->simplePaginate(10),
             'totalCount' => User::where('role_id', '!=', 1)->count(),
         ]);

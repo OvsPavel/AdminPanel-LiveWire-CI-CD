@@ -30,7 +30,6 @@ return new class extends Migration
                 ->constrained("stations")
                 ->nullOnDelete();
 
-            $table->tinyInteger('age'); // add this
             $table->string('address')->nullable(); // add this
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

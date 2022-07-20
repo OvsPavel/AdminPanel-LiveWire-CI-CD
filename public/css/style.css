@@ -6,6 +6,20 @@ html {
     height: 100vh;
 }
 
+input{
+    border-radius: 8px !important;
+    margin: 10px !important;
+}
+
+.modal-content{
+    background-color: #eaedef !important;
+}
+
+.required{
+    color: red;
+    margin-left: 5px;
+}
+
 #hamburger {
     display: none;
 }
@@ -81,6 +95,7 @@ h5 {
     color: grey;
     text-transform: uppercase;
     text-decoration: none;
+    font-size: 12px;
 }
 
 .station_block {
@@ -156,6 +171,8 @@ h5 {
     background-color: #f8d7da;
     padding: 10px;
     border-radius: 10px;
+    background-color: #dc3645;
+    color: white;
 }
 
 .not_danger {
@@ -232,7 +249,7 @@ h5 {
 
 /* ============================== stop broadcasting  ============================== */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 
     .title {
         margin-left: 0;

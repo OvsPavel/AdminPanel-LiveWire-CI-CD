@@ -29,10 +29,11 @@
         }
 
         .auth_block {
-            height: 100vh;
+            min-height: 100vh;
+            height: 100%;
             width: 100%;
             display: flex;
-            padding-top: 15%;
+            align-items: center;
             justify-content: center;
             background-color: #3c4b64;
 
@@ -63,6 +64,23 @@
             border-radius: 10px;
             border: 1px solid #3c4b64;
         }
+
+        /* @media screen and (max-width: 900px) {
+            .auth_block {
+                height: 100%;
+                width: 100%;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                background-color: #3c4b64;
+            }
+        }
+
+        @media screen and (max-width: 1300px) {
+            .auth_block {
+                height: 100vh;
+            }
+        } */
     </style>
     <div id="app" class="auth_block">
 

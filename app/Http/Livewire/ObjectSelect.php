@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Emergency;
 use App\Models\Station;
 use App\Models\StationObject;
 use App\Models\SubCategory;
@@ -14,11 +15,14 @@ class ObjectSelect extends Component
     public $stationId = 1;
     public $objects;
     public $objectId;
+    public $emergencies;
+    public $emergencyId;
 
     public function mount()
     {
         $this->stations = Station::orderBy('id')->get();
         $this->objects = [];
+        $this->emergencies = Emergency::all();
 
         $this->getObjects();
     }

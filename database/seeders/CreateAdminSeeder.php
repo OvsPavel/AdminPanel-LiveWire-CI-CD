@@ -21,7 +21,7 @@ class CreateAdminSeeder extends Seeder
                 'email_verified_at' => NULL,
                 'password' => bcrypt('admin'),
                 'role_id' => 1,
-                'age' => 33,
+                'station_id' => 1,
                 'address' => 'г. Краснодар, ул. Северная, 405'
                 ]
         ];

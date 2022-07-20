@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +26,7 @@ class Station extends Model
         if (count($this->events) == 0) {
             return '';
         }
-            $lastEventTime = $this->events->last()->created_at;
+            $lastEventTime = Carbon::parse($this->events->last()->start_time);
 
             return $lastEventTime->format('d.m.Y H:i:s');
         

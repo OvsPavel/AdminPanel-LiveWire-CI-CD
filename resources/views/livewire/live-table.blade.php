@@ -96,5 +96,8 @@
             </div>
         </div>
         @endif
+
+        @include('components.createUserModal')
+
     </div>
 </div>

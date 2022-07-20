@@ -3,4 +3,6 @@
 
 <div class="title mt-5 mb-5">Рабочее место</div>
 
+<livewire:cabinet-table />
+
 @endsection

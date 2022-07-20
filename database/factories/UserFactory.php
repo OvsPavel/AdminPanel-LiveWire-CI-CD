@@ -24,11 +24,8 @@ class UserFactory extends Factory
             'email' => $faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => bcrypt('admin'),
-
-            // add these
             'role_id' => rand(2,4),
             'station_id' => rand(1,5),
-            'age' => $faker->numberBetween(18, 60),
             'address' => $faker->address,
         ];
     }

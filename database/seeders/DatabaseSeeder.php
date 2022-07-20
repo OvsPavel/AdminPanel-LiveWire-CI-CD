@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SphereOfActivitiesTableSeeder::class);
         $this->call(StationsTableSeeder::class);
         $this->call(StationObjectsTableSeeder::class);
-        $this->call(EventSeeder::class);
         $this->call(RoleSeeder::class);
+        $this->call(EmergencyTypesTableSeeder::class);
+        $this->call(EmergenciesTableSeeder::class);
+        $this->call(EventSeeder::class);
     }
 }
