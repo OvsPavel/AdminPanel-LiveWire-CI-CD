@@ -10,6 +10,7 @@ use App\Models\Station;
 use App\Models\StationObject;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageNotificationController extends Controller
 {
@@ -26,6 +27,8 @@ class MessageNotificationController extends Controller
 
         $emergencyType = EmergencyType::find($emergency_model->emergency_type_id)->title;
 
+        $newEventsCount = Auth::user()->station->events->count();
+
         $event = new Event();
         $event->station_id = $station_model->id;
         $event->station_object_id = $object_model->id;
@@ -39,6 +42,7 @@ class MessageNotificationController extends Controller
 
 
         event(new MessageNotification([
+            'newEventsCount' => $newEventsCount,
             'emergencyType' => $emergencyType,
             'station' => $station,
             'message' =>  $emergency . ' на Объекте - ' . $object,

@@ -373,6 +373,7 @@
                     </li>
                 </ul> -->
                     <ul class="header-nav" id="user_menu">
+                        <!-- <span class="badge badge-warning">@{{ newEventsCount }}</span> -->
                         <li class="nav-item dropdown d-flex align-items-center"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('img/avatar.jpg') }}" alt="user@email.com"></div>
                             </a>
@@ -432,7 +433,6 @@
 
             @yield('content')
 
-
             <div id="action">
                 <!-- <div v-if="status_real" class="danger">
                 <b>@{{ message_title }}</b>
@@ -441,6 +441,7 @@
             </div> -->
 
                 <div v-if="new_event" class="danger">
+               
                     <b>Важность: @{{ emergencyType }}</b>
                     <hr style="margin: 5px;">
                     <b>@{{ station }}</b>
@@ -520,17 +521,19 @@
             el: '#app',
             // component: message,
             data: {
-                station: null,
-                object: '',
+                newEventsCount: 0,
+                // object: '',
                 // status_real: '',
-                // status_learning: ''
-                new_event: ''
+                // status_learning: '',
+                // new_event: ''
             },
 
 
             created() {
                 Echo.channel('notification')
                     .listen('MessageNotification', (e) => {
+                        
+                        document.getElementById('addEvent').click();
 
                         this.new_event = true;
 
@@ -545,6 +548,7 @@
                         this.station = e.message.station;
                         this.message = e.message.message;
                         this.emergencyType = e.message.emergencyType;
+                        this.newEventsCount = e.newEventsCount;
 
                         // if (e.message.status == 'real') {
                         //     this.status_real = e.message.status

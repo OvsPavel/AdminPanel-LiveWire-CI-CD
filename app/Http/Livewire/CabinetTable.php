@@ -17,7 +17,7 @@ class CabinetTable extends Component
     public $sortField = 'emergency_id'; // базовое поле сортировки
     public $sortAsc = true; // базовое направление сортировки
 
-    protected $listeners = ['accessEvent', 'closeEvent'];
+    protected $listeners = ['accessEvent', 'closeEvent', 'newEvent'];
 
     public function sortBy($field)
     {
@@ -28,6 +28,11 @@ class CabinetTable extends Component
         }
 
         $this->sortField = $field;
+    }
+
+    public function newEvent()
+    {
+        return $this->render();
     }
 
 

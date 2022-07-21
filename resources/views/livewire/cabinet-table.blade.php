@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <div class="col-12">
         <div class="title mt-5 mb-5">
-            События в работе  <span style="font-size:24px; color:#28a745; padding-left:10px">{{ $accepted_events_count }} </span> 
+            События в работе 
+            <span style="font-size:24px; color:#28a745; padding-left:10px">{{ $unclosed_events_count }}</span> 
             <span style="font-size:20px">/</span> 
-            <span style="font-size:18px; color:#3c4b64;"> {{ $unclosed_events_count }}</span>
+            <span style="font-size:18px; color:#3c4b64;"> {{ $accepted_events_count - $unclosed_events_count }}</span>
         </div>
         <div class="col-12 scroll">
             <table class="table table-hover">
@@ -78,11 +79,8 @@
                 </thead>
                 <tbody>
                     @foreach($accepted_events as $event)
-                    @if($event->is_closed == 1)
-                    <tr class="alert alert-success">
-                        @else
+                    @if($event->is_closed != 1)
                     <tr>
-                        @endif
                         <td scope="row" class="text-center">{{ $event->emergency->type->title }}</td>
                         <td class="text-center">{{ $event->stationObject->number }}</td>
                         <td class="text-center">{{ $event->title }}</td>
@@ -106,6 +104,7 @@
                             @endif
                         </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>
@@ -115,6 +114,8 @@
     <hr>
 
     <div class="col-12">
+
+    <button id="addEvent" wire:click="$emit('newEvent')">обновить</button>
         <div class="title mt-5 mb-5">
             Новые события 
             <span style="padding-left:10px; font-size:18px; color:#dc3645;"> {{ $news_events_count }} </span>
@@ -181,7 +182,8 @@
                 </thead>
                 <tbody>
                     @foreach($new_events as $event)
-                    <tr>
+                    <!-- <tr @if($new_events->last() === $event) new_event_tr @endif"> -->
+                        <tr>
                         <td scope="row" class="text-center">{{ $event->emergency->type->title }}</td>
                         <td class="text-center">{{ $event->stationObject->number }}</td>
                         <td class="text-center">{{ $event->title }}</td>

@@ -6,16 +6,16 @@ html {
     height: 100vh;
 }
 
-input{
+input {
     border-radius: 8px !important;
     margin: 10px !important;
 }
 
-.modal-content{
+.modal-content {
     background-color: #eaedef !important;
 }
 
-.required{
+.required {
     color: red;
     margin-left: 5px;
 }
@@ -217,40 +217,73 @@ h5 {
     margin-top: 15px;
 }
 
-.station_object_title{
+.station_object_title {
     font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
 }
-.station_object_location{
+.station_object_location {
     font-size: 16px;
 }
 
-.station_object_count{
+.station_object_count {
     font-size: 14px;
     font-weight: normal;
     text-transform: lowercase;
 }
 
-.station_block_info_section{
+.station_block_info_section {
     height: 140px;
     position: relative;
 }
 
-.station_block_last_action{
+.station_block_last_action {
     position: absolute;
     bottom: 0;
     left: 0;
 }
 
-.user_header_action_btn{
+.user_header_action_btn {
     justify-content: flex-end !important;
+}
+#addEvent {
+    display: none;
+}
+.new_event_tr {
+    animation-name: newEvent;
+    animation-duration: 4s;
+    animation-iteration-count: infinite
+}
+@keyframes newEvent {
+    0% {
+        background-color: inherit;
+    }
+
+    20% {
+        background-color: #f8d7da;
+    }
+
+    30% {
+        background-color: inherit;
+    }
+
+    50% {
+        background-color: #f8d7da;
+    }
+    60% {
+        background-color: inherit;
+    }
+    80% {
+        background-color: #f8d7da;
+    }
+    100% {
+        background-color: inherit;
+    }
 }
 
 /* ============================== stop broadcasting  ============================== */
 
 @media screen and (max-width: 800px) {
-
     .title {
         margin-left: 0;
     }
@@ -373,29 +406,29 @@ h5 {
         font-size: 12px;
     }
 
-    .station_object_title{
+    .station_object_title {
         font-size: 16px;
         text-transform: uppercase;
     }
-    .station_object_location{
+    .station_object_location {
         font-size: 14px;
     }
 
-    .station_object_count{
+    .station_object_count {
         font-size: 12px;
         font-weight: bold;
     }
 
-    .station_block_info_section{
+    .station_block_info_section {
         height: auto;
         position: inherit;
     }
-    
-    .station_block_last_action{
+
+    .station_block_last_action {
         position: inherit;
     }
 
-    .user_header_action_btn{
+    .user_header_action_btn {
         justify-content: space-between !important;
     }
 }
